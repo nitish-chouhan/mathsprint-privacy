@@ -1,259 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathSprint Privacy Policy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathSprint Privacy Policy</title>
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            line-height: 1.7;
-            color: #333;
-            background: #fff;
-        }
+<script>
+  // Set theme before paint to avoid flash. Falls back to system preference
+  // until the user taps the toggle; after that, the manual choice wins for
+  // the rest of the session (no persistence — matches artifact constraints).
+  (function () {
+    window.__mathsprintManualTheme = null;
+    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var initial = mq && mq.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', initial);
+  })();
+</script>
 
-        h1 {
-            color: #2563eb;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
+<style>
+  :root {
+    /* ── Light (default) ── */
+    --bg-primary: #F7F8FA;
+    --bg-card: #FFFFFF;
+    --bg-input: #F1F3F5;
 
-        h2 {
-            margin-top: 35px;
-            color: #111827;
-        }
+    --accent: #F97316;
+    --accent-vivid: #EA580C;
+    --accent-text: #EA580C;
+    --accent-tint: rgba(249,115,22,0.14);
+    --accent-dim: rgba(249,115,22,0.15);
 
-        ul {
-            padding-left: 24px;
-        }
+    --success: #16A34A;
+    --success-dim: rgba(22,163,74,0.12);
+    --error: #DC2626;
+    --error-dim: rgba(220,38,38,0.13);
+    --warning: #D97706;
 
-        li {
-            margin-bottom: 8px;
-        }
+    --text-primary: #11151C;
+    --text-secondary: #6B7280;
+    --text-tertiary: rgba(17,21,28,0.65);
 
-        a {
-            color: #2563eb;
-            text-decoration: none;
-        }
+    --border-subtle: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.16);
 
-        a:hover {
-            text-decoration: underline;
-        }
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  }
 
-        .meta {
-            color: #666;
-            margin-bottom: 30px;
-        }
+  :root[data-theme="dark"] {
+    --bg-primary: #0D1117;
+    --bg-card: #161B22;
+    --bg-input: #1E2530;
 
-        footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 14px;
-        }
+    --accent: #F97316;
+    --accent-vivid: #F97316;
+    --accent-text: #F97316;
+    --accent-tint: rgba(249,115,22,0.12);
+    --accent-dim: rgba(249,115,22,0.18);
 
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #111827;
-                color: #e5e7eb;
-            }
+    --success: #22C55E;
+    --success-dim: rgba(34,197,94,0.12);
+    --error: #EF4444;
+    --error-dim: rgba(239,68,68,0.12);
+    --warning: #F59E0B;
 
-            h1,
-            h2 {
-                color: #60a5fa;
-            }
+    --text-primary: #FFFFFF;
+    --text-secondary: #6B7280;
+    --text-tertiary: rgba(255,255,255,0.28);
 
-            h1 {
-                border-color: #374151;
-            }
+    --border-subtle: #1E2530;
+    --border-strong: #2D3748;
 
-            footer {
-                border-color: #374151;
-                color: #9ca3af;
-            }
+    --card-shadow: none;
+  }
 
-            a {
-                color: #93c5fd;
-            }
+  * { box-sizing: border-box; }
 
-            .meta {
-                color: #9ca3af;
-            }
-        }
-    </style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15.5px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-vivid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--card-shadow);
+  }
+  .logo-mark svg {
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+  }
+
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+  }
+  .brand span {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 1px;
+  }
+
+  #theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+  }
+  #theme-toggle:hover { border-color: var(--border-strong); }
+  #theme-toggle svg { width: 18px; height: 18px; }
+  #theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] #theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] #theme-toggle .icon-moon { display: none; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 40px clamp(20px, 5vw, 48px);
+  }
+
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--accent-text);
+    margin: 0 0 8px;
+  }
+
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent-text);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  p, li { line-height: 1.75; color: var(--text-primary); font-weight: 400; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+
+  .meta {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .meta strong { color: var(--text-secondary); }
+
+  a { color: var(--accent-text); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  strong { color: var(--text-primary); }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+</style>
 </head>
 
 <body>
+<div class="page">
 
-<h1>MathSprint Privacy Policy</h1>
+  <div class="top-bar">
+    <div class="brand-group">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z"></path>
+        </svg>
+      </div>
+      <span class="brand">MathSprint<span>Legal</span></span>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
 
-<div class="meta">
-    <strong>Effective Date:</strong> July 10, 2026<br>
-    <strong>Last Updated:</strong> July 10, 2026
+  <div class="card">
+    <h1>MathSprint Privacy Policy</h1>
+    <div class="meta">
+      <strong>Effective Date:</strong> July 10, 2026<br>
+      <strong>Last Updated:</strong> July 10, 2026
+    </div>
+
+    <h2>1. Overview</h2>
+    <p>MathSprint is a mathematics practice application developed by <strong>Nitish Chauhan</strong> ("we", "our", or "us"). This Privacy Policy explains what information may be processed when you use the app, how it is used, and your rights regarding that information.</p>
+    <p>By downloading or using MathSprint, you agree to this Privacy Policy.</p>
+
+    <h2>2. Information We Collect</h2>
+    <p>MathSprint does not require you to create a user account.</p>
+    <p>The app stores certain information locally on your device to provide its features, including:</p>
+    <ul>
+      <li>Your name (if you choose to enter it during onboarding).</li>
+      <li>Practice session history, including scores, topics practiced, question results, and response times.</li>
+      <li>Practice streaks, daily goals, and weekly plans.</li>
+      <li>App preferences such as theme, timer, and haptic feedback settings.</li>
+      <li>Local counters used to manage advertisement frequency.</li>
+    </ul>
+    <p>This information is stored on your device and is not intentionally transmitted to servers operated by us.</p>
+
+    <h2>3. Third-Party Services</h2>
+    <p>MathSprint uses <strong>Google AdMob</strong> (Google LLC) to display advertisements.</p>
+    <p>Google may collect and process certain information necessary to provide, measure, and improve advertising services. This may include:</p>
+    <ul>
+      <li>Device identifiers (such as the Android Advertising ID).</li>
+      <li>IP address.</li>
+      <li>Approximate location derived from your IP address.</li>
+      <li>App interaction and diagnostic information.</li>
+    </ul>
+    <p>The collection and processing of this information is governed by Google's Privacy Policy.</p>
+    <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></p>
+    <p>Where required by applicable law, MathSprint will request your consent before serving personalized advertisements.</p>
+    <p>You may also manage your advertising preferences through your Android device settings.</p>
+
+    <h2>4. Permissions</h2>
+    <p>MathSprint requests only the permissions necessary for its functionality.</p>
+    <ul>
+      <li><strong>Internet</strong> – Required to load advertisements and online resources.</li>
+      <li><strong>Vibrate</strong> – Used to provide haptic feedback during app interactions.</li>
+    </ul>
+    <p>MathSprint does not intentionally request or use unnecessary permissions such as precise location, microphone, camera, or storage access.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>MathSprint is intended for a general audience.</p>
+    <p>We do not knowingly collect personal information from children under the age of 13. If you believe a child has provided personal information through the app, please contact us so we can take appropriate action.</p>
+
+    <h2>6. Data Retention and Deletion</h2>
+    <p>Information stored by MathSprint remains on your device.</p>
+    <p>You may remove all locally stored information at any time by:</p>
+    <ul>
+      <li>Clearing the application's data through your device settings.</li>
+      <li>Uninstalling the application.</li>
+    </ul>
+
+    <h2>7. Future Changes to the App</h2>
+    <p>As MathSprint evolves, we may introduce new features or services.</p>
+    <p>If those changes affect how information is collected, used, or stored, this Privacy Policy will be updated before those changes take effect.</p>
+
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time.</p>
+    <p>Any changes will be reflected by updating the <strong>Last Updated</strong> date at the top of this document. Continued use of the app after changes become effective constitutes your acceptance of the revised Privacy Policy.</p>
+
+    <h2>9. Contact</h2>
+    <p>If you have any questions about this Privacy Policy, please contact:</p>
+    <p>
+      <strong>Developer:</strong> Nitish Chauhan<br>
+      <strong>Email:</strong> <a href="mailto:nitish3201@gmail.com">nitish3201@gmail.com</a>
+    </p>
+
+    <footer>© 2026 MathSprint. All rights reserved.</footer>
+  </div>
 </div>
 
-<h2>1. Overview</h2>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
-<p>
-MathSprint is a mathematics practice application developed by
-<strong>Nitish Chauhan</strong> ("we", "our", or "us").
-This Privacy Policy explains what information may be processed when you use the
-app, how it is used, and your rights regarding that information.
-</p>
+    function current() { return root.getAttribute('data-theme'); }
+    function apply(theme) { root.setAttribute('data-theme', theme); }
 
-<p>
-By downloading or using MathSprint, you agree to this Privacy Policy.
-</p>
+    if (mq) {
+      mq.addEventListener('change', function (e) {
+        if (window.__mathsprintManualTheme === null) {
+          apply(e.matches ? 'dark' : 'light');
+        }
+      });
+    }
 
-<h2>2. Information We Collect</h2>
-
-<p>
-MathSprint does not require you to create a user account.
-</p>
-
-<p>
-The app stores certain information locally on your device to provide its features,
-including:
-</p>
-
-<ul>
-    <li>Your name (if you choose to enter it during onboarding).</li>
-    <li>Practice session history, including scores, topics practiced, question results, and response times.</li>
-    <li>Practice streaks, daily goals, and weekly plans.</li>
-    <li>App preferences such as theme, timer, and haptic feedback settings.</li>
-    <li>Local counters used to manage advertisement frequency.</li>
-</ul>
-
-<p>
-This information is stored on your device and is not intentionally transmitted to
-servers operated by us.
-</p>
-
-<h2>3. Third-Party Services</h2>
-
-<p>
-MathSprint uses <strong>Google AdMob</strong> (Google LLC) to display advertisements.
-</p>
-
-<p>
-Google may collect and process certain information necessary to provide,
-measure, and improve advertising services. This may include:
-</p>
-
-<ul>
-    <li>Device identifiers (such as the Android Advertising ID).</li>
-    <li>IP address.</li>
-    <li>Approximate location derived from your IP address.</li>
-    <li>App interaction and diagnostic information.</li>
-</ul>
-
-<p>
-The collection and processing of this information is governed by Google's
-Privacy Policy.
-</p>
-
-<p>
-<a href="https://policies.google.com/privacy" target="_blank">
-Google Privacy Policy
-</a>
-</p>
-
-<p>
-Where required by applicable law, MathSprint will request your consent before
-serving personalized advertisements.
-</p>
-
-<p>
-You may also manage your advertising preferences through your Android device
-settings.
-</p>
-
-<h2>4. Permissions</h2>
-
-<p>
-MathSprint requests only the permissions necessary for its functionality.
-</p>
-
-<ul>
-    <li><strong>Internet</strong> – Required to load advertisements and online resources.</li>
-    <li><strong>Vibrate</strong> – Used to provide haptic feedback during app interactions.</li>
-</ul>
-
-<p>
-MathSprint does not intentionally request or use unnecessary permissions such as
-precise location, microphone, camera, or storage access.
-</p>
-
-<h2>5. Children's Privacy</h2>
-
-<p>
-MathSprint is intended for a general audience.
-</p>
-
-<p>
-We do not knowingly collect personal information from children under the age of
-13. If you believe a child has provided personal information through the app,
-please contact us so we can take appropriate action.
-</p>
-
-<h2>6. Data Retention and Deletion</h2>
-
-<p>
-Information stored by MathSprint remains on your device.
-</p>
-
-<p>
-You may remove all locally stored information at any time by:
-</p>
-
-<ul>
-    <li>Clearing the application's data through your device settings.</li>
-    <li>Uninstalling the application.</li>
-</ul>
-
-<h2>7. Future Changes to the App</h2>
-
-<p>
-As MathSprint evolves, we may introduce new features or services.
-</p>
-
-<p>
-If those changes affect how information is collected, used, or stored, this
-Privacy Policy will be updated before those changes take effect.
-</p>
-
-<h2>8. Changes to This Privacy Policy</h2>
-
-<p>
-We may update this Privacy Policy from time to time.
-</p>
-
-<p>
-Any changes will be reflected by updating the <strong>Last Updated</strong>
-date at the top of this document. Continued use of the app after changes become
-effective constitutes your acceptance of the revised Privacy Policy.
-</p>
-
-<h2>9. Contact</h2>
-
-<p>
-If you have any questions about this Privacy Policy, please contact:
-</p>
-
-<p>
-<strong>Developer:</strong> Nitish Chauhan<br>
-<strong>Email:</strong>
-<a href="mailto:nitish3201@gmail.com">nitish3201@gmail.com</a>
-</p>
-
-<footer>
-    © 2026 MathSprint. All rights reserved.
-</footer>
-
+    var btn = document.getElementById('theme-toggle');
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      window.__mathsprintManualTheme = next;
+      apply(next);
+    });
+  })();
+</script>
 </body>
 </html>
