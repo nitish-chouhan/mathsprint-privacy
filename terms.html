@@ -1,170 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathSprint Terms & Conditions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathSprint Terms & Conditions</title>
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            line-height: 1.7;
-            color: #333;
-        }
+<script>
+  (function () {
+    window.__mathsprintManualTheme = null;
+    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    var initial = mq && mq.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', initial);
+  })();
+</script>
 
-        h1 {
-            color: #2563eb;
-        }
+<style>
+  :root {
+    /* ── Light (default) ── */
+    --bg-primary: #F7F8FA;
+    --bg-card: #FFFFFF;
+    --bg-input: #F1F3F5;
 
-        h2 {
-            margin-top: 30px;
-            color: #111827;
-        }
+    --accent: #F97316;
+    --accent-vivid: #EA580C;
+    --accent-text: #EA580C;
+    --accent-tint: rgba(249,115,22,0.14);
+    --accent-dim: rgba(249,115,22,0.15);
 
-        ul {
-            padding-left: 20px;
-        }
+    --success: #16A34A;
+    --success-dim: rgba(22,163,74,0.12);
+    --error: #DC2626;
+    --error-dim: rgba(220,38,38,0.13);
+    --warning: #D97706;
 
-        strong {
-            color: #111827;
-        }
-    </style>
+    --text-primary: #11151C;
+    --text-secondary: #6B7280;
+    --text-tertiary: rgba(17,21,28,0.65);
+
+    --border-subtle: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.16);
+
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  }
+
+  :root[data-theme="dark"] {
+    --bg-primary: #0D1117;
+    --bg-card: #161B22;
+    --bg-input: #1E2530;
+
+    --accent: #F97316;
+    --accent-vivid: #F97316;
+    --accent-text: #F97316;
+    --accent-tint: rgba(249,115,22,0.12);
+    --accent-dim: rgba(249,115,22,0.18);
+
+    --success: #22C55E;
+    --success-dim: rgba(34,197,94,0.12);
+    --error: #EF4444;
+    --error-dim: rgba(239,68,68,0.12);
+    --warning: #F59E0B;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #6B7280;
+    --text-tertiary: rgba(255,255,255,0.28);
+
+    --border-subtle: #1E2530;
+    --border-strong: #2D3748;
+
+    --card-shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15.5px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-vivid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--card-shadow);
+  }
+  .logo-mark svg {
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+  }
+
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+  }
+  .brand span {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 1px;
+  }
+
+  #theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+  }
+  #theme-toggle:hover { border-color: var(--border-strong); }
+  #theme-toggle svg { width: 18px; height: 18px; }
+  #theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] #theme-toggle .icon-sun { display: block; }
+  :root[data-theme="dark"] #theme-toggle .icon-moon { display: none; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 40px clamp(20px, 5vw, 48px);
+  }
+
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--accent-text);
+    margin: 0 0 8px;
+  }
+
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent-text);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  p, li { line-height: 1.75; color: var(--text-primary); font-weight: 400; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+
+  .meta {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .meta strong { color: var(--text-secondary); }
+
+  a { color: var(--accent-text); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  strong { color: var(--text-primary); }
+</style>
 </head>
+
 <body>
+<div class="page">
 
-<h1>MathSprint Terms & Conditions</h1>
+  <div class="top-bar">
+    <div class="brand-group">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z"></path>
+        </svg>
+      </div>
+      <span class="brand">MathSprint<span>Legal</span></span>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
 
-<p><strong>Effective Date:</strong> July 10, 2026</p>
-<p><strong>Last Updated:</strong> July 10, 2026</p>
+  <div class="card">
+    <h1>MathSprint Terms & Conditions</h1>
+    <div class="meta">
+      <strong>Effective Date:</strong> July 10, 2026<br>
+      <strong>Last Updated:</strong> July 10, 2026
+    </div>
 
-<h2>1. Acceptance of Terms</h2>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By downloading, installing, or using MathSprint ("the App"), you agree to be bound by these Terms & Conditions. If you do not agree with any part of these Terms, you must not use the App.</p>
 
-<p>By downloading, installing, or using MathSprint ("the App"), you agree to be bound by these Terms & Conditions.</p>
+    <h2>2. License</h2>
+    <p>Subject to these Terms, you are granted a limited, non-exclusive, non-transferable, revocable license to use MathSprint for your personal, non-commercial use.</p>
 
-<p>If you do not agree with these Terms, you must not use the App.</p>
+    <h2>3. Intellectual Property</h2>
+    <p>All rights, title, and interest in MathSprint, including its name, logo, design, user interface, graphics, educational content, question generators, and source code, remain the property of the developer and are protected under applicable intellectual property laws.</p>
+    <p>You may not copy, modify, distribute, reverse engineer, decompile, create derivative works, or otherwise exploit any part of the App except where permitted by applicable law.</p>
 
-<h2>2. License</h2>
+    <h2>4. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the App for unlawful or fraudulent purposes.</li>
+      <li>Attempt to interfere with the operation or security of the App.</li>
+      <li>Bypass or manipulate the App's advertising systems.</li>
+      <li>Redistribute, sublicense, rent, lease, or sell the App.</li>
+      <li>Use automated tools, bots, or scripts in a manner not intended by the App.</li>
+    </ul>
 
-<p>Subject to these Terms, you are granted a limited, non-exclusive, non-transferable, revocable license to use MathSprint for personal, non-commercial use.</p>
+    <h2>5. Third-Party Services</h2>
+    <p>MathSprint uses third-party services, including Google AdMob, to display advertisements.</p>
+    <p>Your interaction with third-party services is governed by their own terms and privacy policies. We are not responsible for the availability, content, or practices of third-party services.</p>
 
-<!-- Continue the remaining sections in the same format -->
-  <h1>MathSprint Terms & Conditions</h1>
+    <h2>6. Google Play Distribution</h2>
+    <p>If you downloaded MathSprint through Google Play, you acknowledge that Google is not responsible for providing maintenance, support, or warranty services for the App.</p>
+    <p>These Terms are an agreement solely between you and the developer.</p>
 
-<p><strong>Effective Date:</strong> July 10, 2026</p>
-<p><strong>Last Updated:</strong> July 10, 2026</p>
+    <h2>7. Availability</h2>
+    <p>We strive to keep MathSprint available and functional. However, we do not guarantee uninterrupted service or compatibility with every device.</p>
+    <p>We reserve the right to modify, suspend, or discontinue any feature or the entire App at any time without prior notice.</p>
 
-<h2>1. Acceptance of Terms</h2>
+    <h2>8. Updates</h2>
+    <p>We may release updates to improve security, fix bugs, improve performance, or introduce new features.</p>
+    <p>Some updates may be required for continued use of the App.</p>
 
-<p>By downloading, installing, or using MathSprint ("the App"), you agree to be bound by these Terms & Conditions. If you do not agree with any part of these Terms, you must not use the App.</p>
+    <h2>9. User Responsibilities</h2>
+    <p>You are responsible for:</p>
+    <ul>
+      <li>Maintaining the security of your device.</li>
+      <li>Using the App in compliance with applicable laws.</li>
+      <li>Any consequences resulting from your use of the App.</li>
+    </ul>
 
-<h2>2. License</h2>
+    <h2>10. Disclaimer</h2>
+    <p>MathSprint is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express or implied.</p>
+    <p>We do not guarantee that:</p>
+    <ul>
+      <li>The App will always be available or error-free.</li>
+      <li>The educational content is free from mistakes.</li>
+      <li>Practice results will accurately predict examination performance.</li>
+    </ul>
+    <p>The App is intended as an educational practice tool only.</p>
 
-<p>Subject to these Terms, you are granted a limited, non-exclusive, non-transferable, revocable license to use MathSprint for your personal, non-commercial use.</p>
+    <h2>11. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from the use of, or inability to use, MathSprint.</p>
 
-<h2>3. Intellectual Property</h2>
+    <h2>12. Governing Law</h2>
+    <p>These Terms shall be governed by and interpreted in accordance with the laws of India.</p>
+    <p>Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the competent courts in India.</p>
 
-<p>All rights, title, and interest in MathSprint, including its name, logo, design, user interface, graphics, educational content, question generators, and source code, remain the property of the developer and are protected under applicable intellectual property laws.</p>
+    <h2>13. Changes to These Terms</h2>
+    <p>We may revise these Terms & Conditions from time to time.</p>
+    <p>When changes are made, the <strong>Last Updated</strong> date at the top of this page will be revised.</p>
+    <p>Your continued use of MathSprint after changes become effective constitutes acceptance of the updated Terms.</p>
 
-<p>You may not copy, modify, distribute, reverse engineer, decompile, create derivative works, or otherwise exploit any part of the App except where permitted by applicable law.</p>
+    <h2>14. Contact</h2>
+    <p>If you have any questions regarding these Terms & Conditions, you may contact us:</p>
+    <p>
+      <strong>Developer:</strong> Nitish Chauhan<br>
+      <strong>Email:</strong> <a href="mailto:nitish3201@gmail.com">nitish3201@gmail.com</a>
+    </p>
+  </div>
+</div>
 
-<h2>4. Acceptable Use</h2>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
-<p>You agree not to:</p>
+    function current() { return root.getAttribute('data-theme'); }
+    function apply(theme) { root.setAttribute('data-theme', theme); }
 
-<ul>
-    <li>Use the App for unlawful or fraudulent purposes.</li>
-    <li>Attempt to interfere with the operation or security of the App.</li>
-    <li>Bypass or manipulate the App's advertising systems.</li>
-    <li>Redistribute, sublicense, rent, lease, or sell the App.</li>
-    <li>Use automated tools, bots, or scripts in a manner not intended by the App.</li>
-</ul>
+    if (mq) {
+      mq.addEventListener('change', function (e) {
+        if (window.__mathsprintManualTheme === null) {
+          apply(e.matches ? 'dark' : 'light');
+        }
+      });
+    }
 
-<h2>5. Third-Party Services</h2>
-
-<p>MathSprint uses third-party services, including Google AdMob, to display advertisements.</p>
-
-<p>Your interaction with third-party services is governed by their own terms and privacy policies. We are not responsible for the availability, content, or practices of third-party services.</p>
-
-<h2>6. Google Play Distribution</h2>
-
-<p>If you downloaded MathSprint through Google Play, you acknowledge that Google is not responsible for providing maintenance, support, or warranty services for the App.</p>
-
-<p>These Terms are an agreement solely between you and the developer.</p>
-
-<h2>7. Availability</h2>
-
-<p>We strive to keep MathSprint available and functional. However, we do not guarantee uninterrupted service or compatibility with every device.</p>
-
-<p>We reserve the right to modify, suspend, or discontinue any feature or the entire App at any time without prior notice.</p>
-
-<h2>8. Updates</h2>
-
-<p>We may release updates to improve security, fix bugs, improve performance, or introduce new features.</p>
-
-<p>Some updates may be required for continued use of the App.</p>
-
-<h2>9. User Responsibilities</h2>
-
-<p>You are responsible for:</p>
-
-<ul>
-    <li>Maintaining the security of your device.</li>
-    <li>Using the App in compliance with applicable laws.</li>
-    <li>Any consequences resulting from your use of the App.</li>
-</ul>
-
-<h2>10. Disclaimer</h2>
-
-<p>MathSprint is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express or implied.</p>
-
-<p>We do not guarantee that:</p>
-
-<ul>
-    <li>The App will always be available or error-free.</li>
-    <li>The educational content is free from mistakes.</li>
-    <li>Practice results will accurately predict examination performance.</li>
-</ul>
-
-<p>The App is intended as an educational practice tool only.</p>
-
-<h2>11. Limitation of Liability</h2>
-
-<p>To the maximum extent permitted by law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from the use of, or inability to use, MathSprint.</p>
-
-<h2>12. Governing Law</h2>
-
-<p>These Terms shall be governed by and interpreted in accordance with the laws of India.</p>
-
-<p>Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the competent courts in India.</p>
-
-<h2>13. Changes to These Terms</h2>
-
-<p>We may revise these Terms & Conditions from time to time.</p>
-
-<p>When changes are made, the <strong>Last Updated</strong> date at the top of this page will be revised.</p>
-
-<p>Your continued use of MathSprint after changes become effective constitutes acceptance of the updated Terms.</p>
-
-<h2>14. Contact</h2>
-
-<p>If you have any questions regarding these Terms & Conditions, you may contact us:</p>
-
-<p>
-<strong>Developer:</strong> Nitish Rajput<br>
-<strong>Email:</strong>
-<a href="mailto:nitish3201@gmail.com">nitish3201@gmail.com</a>
-</p>
-
-<h2>14. Contact</h2>
-
-<p>
-<strong>Developer:</strong> Nitish Rajput<br>
-<strong>Email:</strong>
-<a href="mailto:nitish3201@gmail.com">nitish3201@gmail.com</a>
-</p>
-
+    var btn = document.getElementById('theme-toggle');
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      window.__mathsprintManualTheme = next;
+      apply(next);
+    });
+  })();
+</script>
 </body>
 </html>
